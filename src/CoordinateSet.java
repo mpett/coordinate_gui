@@ -6,7 +6,7 @@ import java.util.Collections;
  */
 public class CoordinateSet {
     private ArrayList<Coordinate> coordinates;
-    private int xMax, yMax;
+    private int xMax, yMax, xMin, yMin;
 
     public CoordinateSet() {
         coordinates = handleInput();
@@ -22,6 +22,14 @@ public class CoordinateSet {
 
     public int getyMax() {
         return yMax;
+    }
+
+    public int getxMin() {
+        return xMin;
+    }
+
+    public int getyMin() {
+        return yMin;
     }
 
     private ArrayList<Coordinate> handleInput() {
@@ -44,6 +52,8 @@ public class CoordinateSet {
         Collections.sort(yCoords);
         xMax = xCoords.get(xCoords.size()-1);
         yMax = yCoords.get(yCoords.size()-1);
+        xMin = xCoords.get(0);
+        yMin = yCoords.get(0);
         return coordinates;
     }
 

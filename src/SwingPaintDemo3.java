@@ -22,10 +22,11 @@ public class SwingPaintDemo3 {
         System.out.println("Created GUI on EDT? " + SwingUtilities.isEventDispatchThread());
         JFrame frame = new JFrame("Demo Frame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800,600);
+        frame.setSize(900,700);
         frame.add(new MyPanel());
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo( null );
     }
 }
 
@@ -37,26 +38,28 @@ class MyPanel extends JPanel {
     private int squareHeight = 20;
     private double xCoordinateScale;
     private double yCoordinateScale;
+    private int xMin, yMin;
 
     private ArrayList<Coordinate> coordinates;
     public MyPanel() {
         setBorder(BorderFactory.createLineBorder(Color.black));
         CoordinateSet set = new CoordinateSet();
-        xCoordinateScale = (double) SCREENWIDTH / set.getxMax();
-        yCoordinateScale = (double) SCREENHEIGHT / set.getyMax();
-        System.err.println(yCoordinateScale);
+        xMin = Math.abs(set.getxMin());
+        yMin = Math.abs(set.getyMin());
+        xCoordinateScale = (double) SCREENWIDTH / (set.getxMax() + xMin);
+        yCoordinateScale = (double) SCREENHEIGHT / (set.getyMax() + yMin);
         coordinates = set.getCoordinates();
     }
 
     public Dimension getPreferredSize() {
-        return new Dimension(800,600);
+        return new Dimension(SCREENWIDTH + 100,SCREENHEIGHT + 100);
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Coordinate coordinate : coordinates) {
-            double xCoord = coordinate.getxPosition() * xCoordinateScale;
-            double yCoord = coordinate.getyPosition() * yCoordinateScale;
+            double xCoord = (coordinate.getxPosition() + xMin) * xCoordinateScale;
+            double yCoord = (coordinate.getyPosition() + yMin) * yCoordinateScale;
             System.err.println(xCoord + " " + yCoord);
             g.setColor(Color.RED);
             g.fillRect((int) xCoord,(int) yCoord,squareWidth,squareHeight);
