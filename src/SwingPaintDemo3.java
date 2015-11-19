@@ -29,6 +29,12 @@ public class SwingPaintDemo3 {
 }
 
 class MyPanel extends JPanel {
+
+    private int squareX = 50;
+    private int squareY = 50;
+    private int squareW = 20;
+    private int squareH = 20;
+
     public MyPanel() {
         setBorder(BorderFactory.createLineBorder(Color.black));
     }
@@ -40,5 +46,9 @@ class MyPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawString("Heil Hitler", 250, 200);
+        g.setColor(Color.RED);
+        g.fillRect(squareX,squareY,squareW,squareH);
+        g.setColor(Color.BLACK);
+        g.drawRect(squareX,squareY,squareW,squareH);
     }
 }
