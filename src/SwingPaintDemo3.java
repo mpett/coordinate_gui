@@ -20,7 +20,7 @@ public class SwingPaintDemo3 {
 
     private static void createAndShowGUI() {
         System.out.println("Created GUI on EDT? " + SwingUtilities.isEventDispatchThread());
-        JFrame frame = new JFrame("Demo Frame");
+        JFrame frame = new JFrame("Digpro Recruitment Test - Martin Pettersson");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900,700);
         frame.add(new MyPanel());
@@ -52,7 +52,7 @@ class MyPanel extends JPanel {
     }
 
     public Dimension getPreferredSize() {
-        return new Dimension(SCREENWIDTH + 100,SCREENHEIGHT + 100);
+        return new Dimension(SCREENWIDTH + 300,SCREENHEIGHT + 100);
     }
 
     public void paintComponent(Graphics g) {
@@ -64,7 +64,7 @@ class MyPanel extends JPanel {
             g.setColor(Color.RED);
             g.fillRect((int) xCoord,(int) yCoord,squareWidth,squareHeight);
             g.setColor(Color.BLACK);
-            g.drawRect((int) xCoord, (int) yCoord, squareWidth, squareHeight);
+            g.drawRect((int) xCoord,(int) yCoord, squareWidth, squareHeight);
         }
     }
 }

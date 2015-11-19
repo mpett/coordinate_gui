@@ -1,3 +1,9 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -58,18 +64,36 @@ public class CoordinateSet {
     }
 
     private String getInput() {
-        return "-226, 190, ST-971\n" +
-                "71, 1202, ST-605\n" +
-                "143, 1348, ST-984\n" +
-                "657, 1283, ST-1435\n" +
-                "195, 1072, STO-737\n" +
-                "677, -178, ST-844\n" +
-                "-142, 66, ST-1184\n" +
-                "200, 1270, STO-1063\n" +
-                "164, 414, ST-856\n" +
-                "386, 1237, ST-1394\n" +
-                "485, 1456, ST-1205\n" +
-                "276, 998, ST-1016";
+        URL url;
+        InputStream is = null;
+        BufferedReader br;
+        String line;
+        String returnData = "";
+
+        try {
+            url = new URL("http://daily.digpro.se/bios/servlet/bios.servlets.web.RecruitmentTestServlet");
+            is = url.openStream();  // throws an IOException
+            br = new BufferedReader(new InputStreamReader(is));
+
+            while ((line = br.readLine()) != null) {
+                if (line.contains("#"))
+                    continue;
+                returnData += line + "\n";
+            }
+        } catch (MalformedURLException mue) {
+            mue.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            try {
+                if (is != null) is.close();
+            } catch (IOException ioe) {
+                // nothing to see here
+            }
+        }
+
+
+        return returnData;
     }
 }
 
