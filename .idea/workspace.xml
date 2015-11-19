@@ -26,16 +26,14 @@
       <file leaf-file-name="SwingPaintDemo3.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SwingPaintDemo3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5890411" vertical-offset="374" max-vertical-offset="885">
-              <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.5890411" vertical-offset="374" max-vertical-offset="1080">
+              <caret line="45" column="36" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#340#470#0" expanded="true" />
-                <element signature="e#459#460#0" expanded="true" />
-                <element signature="e#1032#1033#0" expanded="true" />
-                <element signature="e#1102#1103#0" expanded="true" />
-                <element signature="e#1145#1146#0" expanded="true" />
-                <element signature="e#1190#1191#0" expanded="true" />
+                <element signature="e#368#498#0" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+                <element signature="e#1596#1597#0" expanded="true" />
+                <element signature="e#1641#1642#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,16 +42,29 @@
       <file leaf-file-name="CoordinateSet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CoordinateSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1005">
-              <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="584" max-vertical-offset="1455">
+              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
               <folding>
-                <element signature="e#185#186#0" expanded="true" />
-                <element signature="e#228#229#0" expanded="true" />
-                <element signature="e#281#282#0" expanded="true" />
-                <element signature="e#315#316#0" expanded="true" />
-                <element signature="e#509#521#0" expanded="true" />
-                <element signature="e#1846#1847#0" expanded="true" />
-                <element signature="e#1919#1920#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#243#244#0" expanded="true" />
+                <element signature="e#286#287#0" expanded="true" />
+                <element signature="e#339#340#0" expanded="true" />
+                <element signature="e#373#374#0" expanded="true" />
+                <element signature="e#401#402#0" expanded="true" />
+                <element signature="e#428#429#0" expanded="true" />
+                <element signature="e#456#457#0" expanded="true" />
+                <element signature="e#483#484#0" expanded="true" />
+                <element signature="e#677#689#0" expanded="true" />
+                <element signature="e#743#752#0" expanded="true" />
+                <element signature="e#806#815#0" expanded="true" />
+                <element signature="e#2379#2380#0" expanded="true" />
+                <element signature="e#2411#2412#0" expanded="true" />
+                <element signature="e#2444#2445#0" expanded="true" />
+                <element signature="e#2476#2477#0" expanded="true" />
+                <element signature="e#2517#2518#0" expanded="true" />
+                <element signature="e#2554#2555#0" expanded="true" />
+                <element signature="e#2586#2587#0" expanded="true" />
+                <element signature="e#2659#2660#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,6 +146,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SwingPaintDemo3.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -404,32 +419,43 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/CoordinateSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1005">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1455">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
           <folding>
-            <element signature="e#185#186#0" expanded="true" />
-            <element signature="e#228#229#0" expanded="true" />
-            <element signature="e#281#282#0" expanded="true" />
-            <element signature="e#315#316#0" expanded="true" />
-            <element signature="e#509#521#0" expanded="true" />
-            <element signature="e#1846#1847#0" expanded="true" />
-            <element signature="e#1919#1920#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
+            <element signature="e#286#287#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#401#402#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#677#689#0" expanded="true" />
+            <element signature="e#743#752#0" expanded="true" />
+            <element signature="e#806#815#0" expanded="true" />
+            <element signature="e#2379#2380#0" expanded="true" />
+            <element signature="e#2411#2412#0" expanded="true" />
+            <element signature="e#2444#2445#0" expanded="true" />
+            <element signature="e#2476#2477#0" expanded="true" />
+            <element signature="e#2517#2518#0" expanded="true" />
+            <element signature="e#2554#2555#0" expanded="true" />
+            <element signature="e#2586#2587#0" expanded="true" />
+            <element signature="e#2659#2660#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SwingPaintDemo3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5890411" vertical-offset="374" max-vertical-offset="885">
-          <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.5890411" vertical-offset="374" max-vertical-offset="1080">
+          <caret line="45" column="36" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#340#470#0" expanded="true" />
-            <element signature="e#459#460#0" expanded="true" />
-            <element signature="e#1032#1033#0" expanded="true" />
-            <element signature="e#1102#1103#0" expanded="true" />
-            <element signature="e#1145#1146#0" expanded="true" />
-            <element signature="e#1190#1191#0" expanded="true" />
+            <element signature="e#368#498#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#1596#1597#0" expanded="true" />
+            <element signature="e#1641#1642#0" expanded="true" />
           </folding>
         </state>
       </provider>

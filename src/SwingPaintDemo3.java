@@ -5,6 +5,7 @@ import javax.swing.BorderFactory;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class SwingPaintDemo3 {
     public static void main(String[] args) {
@@ -29,14 +30,22 @@ public class SwingPaintDemo3 {
 }
 
 class MyPanel extends JPanel {
+    private final int SCREENWIDTH = 800;
+    private final int SCREENHEIGHT = 600;
 
-    private int squareX = 50;
-    private int squareY = 50;
-    private int squareW = 20;
-    private int squareH = 20;
+    private int squareWidth = 20;
+    private int squareHeight = 20;
+    private double xCoordinateScale;
+    private double yCoordinateScale;
 
+    private ArrayList<Coordinate> coordinates;
     public MyPanel() {
         setBorder(BorderFactory.createLineBorder(Color.black));
+        CoordinateSet set = new CoordinateSet();
+        xCoordinateScale = (double) SCREENWIDTH / set.getxMax();
+        yCoordinateScale = (double) SCREENHEIGHT / set.getyMax();
+        System.err.println(yCoordinateScale);
+        coordinates = set.getCoordinates();
     }
 
     public Dimension getPreferredSize() {
@@ -45,10 +54,14 @@ class MyPanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawString("Heil Hitler", 250, 200);
-        g.setColor(Color.RED);
-        g.fillRect(squareX,squareY,squareW,squareH);
-        g.setColor(Color.BLACK);
-        g.drawRect(squareX,squareY,squareW,squareH);
+        for (Coordinate coordinate : coordinates) {
+            double xCoord = coordinate.getxPosition() * xCoordinateScale;
+            double yCoord = coordinate.getyPosition() * yCoordinateScale;
+            System.err.println(xCoord + " " + yCoord);
+            g.setColor(Color.RED);
+            g.fillRect((int) xCoord,(int) yCoord,squareWidth,squareHeight);
+            g.setColor(Color.BLACK);
+            g.drawRect((int) xCoord, (int) yCoord, squareWidth, squareHeight);
+        }
     }
 }
