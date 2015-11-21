@@ -1,4 +1,4 @@
-T-971
+-226, 190, ST-971
 71, 1202, ST-605
 143, 1348, ST-984
 657, 1283, ST-1435
@@ -11,5 +11,7 @@ T-971
 485, 1456, ST-1205
 276, 998, ST-1016
 
-frågor:
-vilken range ligger koordinaterna inom?
+memo
+
+Problem jag har stött på:
+paintcomponent kallas två gånger -- löste det genom att flytta koordinatuppdateringen

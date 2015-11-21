@@ -9,7 +9,6 @@ import java.util.Timer;
 
 public class SwingPaintDemo3 {
     public static void main(String[] args) {
-        new CoordinateSet();
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -20,6 +19,7 @@ public class SwingPaintDemo3 {
 
     private static void createAndShowGUI() {
         final MyPanel panel = new MyPanel();
+        panel.updateSet();
         System.out.println("Created GUI on EDT? " + SwingUtilities.isEventDispatchThread());
         JFrame frame = new JFrame("Digpro Recruitment Test - Martin Pettersson");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,11 +30,12 @@ public class SwingPaintDemo3 {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panel.updateSet();
                 panel.repaint();
             }
         });
+
         panel.add(nextButton);
-        frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
@@ -49,14 +50,15 @@ class MyPanel extends JPanel {
     private double xCoordinateScale;
     private double yCoordinateScale;
     private int xMin, yMin;
+    private CoordinateSet set;
 
     private ArrayList<Coordinate> coordinates;
+
     public MyPanel() {
         setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
-    private void getCoordinateesFromServer() {
-        CoordinateSet set = new CoordinateSet();
+    private void handleCoordinates() {
         xMin = Math.abs(set.getxMin());
         yMin = Math.abs(set.getyMin());
         xCoordinateScale = (double) SCREENWIDTH / (set.getxMax() + xMin);
@@ -68,12 +70,17 @@ class MyPanel extends JPanel {
         return new Dimension(SCREENWIDTH + 300,SCREENHEIGHT + 100);
     }
 
+    public void updateSet() {
+        System.err.println("Updating coordinates");
+        set = new CoordinateSet();
+        System.err.println("Done");
+    }
+
     public void paintComponent(Graphics g) {
-        getCoordinateesFromServer();
+        handleCoordinates();
         for (Coordinate coordinate : coordinates) {
             double xCoord = (coordinate.getxPosition() + xMin) * xCoordinateScale;
             double yCoord = (coordinate.getyPosition() + yMin) * yCoordinateScale;
-            System.err.println(xCoord + " " + yCoord);
             g.setColor(Color.RED);
             g.fillRect((int) xCoord,(int) yCoord,squareWidth,squareHeight);
             g.setColor(Color.BLACK);
