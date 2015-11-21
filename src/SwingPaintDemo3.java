@@ -55,8 +55,7 @@ class MyPanel extends JPanel {
         return new Dimension(SCREENWIDTH + 300,SCREENHEIGHT + 100);
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public void paint(Graphics g) {
         for (Coordinate coordinate : coordinates) {
             double xCoord = (coordinate.getxPosition() + xMin) * xCoordinateScale;
             double yCoord = (coordinate.getyPosition() + yMin) * yCoordinateScale;

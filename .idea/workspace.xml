@@ -26,14 +26,10 @@
       <file leaf-file-name="SwingPaintDemo3.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SwingPaintDemo3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2607204" vertical-offset="0" max-vertical-offset="1125">
-              <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.6140652" vertical-offset="422" max-vertical-offset="1005">
+              <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#368#498#0" expanded="true" />
-                <element signature="e#487#488#0" expanded="true" />
-                <element signature="e#1754#1755#0" expanded="true" />
-                <element signature="e#1828#1829#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,32 +40,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="1064" max-vertical-offset="1965">
               <caret line="95" column="26" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#436#437#0" expanded="true" />
-                <element signature="e#479#480#0" expanded="true" />
-                <element signature="e#532#533#0" expanded="true" />
-                <element signature="e#566#567#0" expanded="true" />
-                <element signature="e#594#595#0" expanded="true" />
-                <element signature="e#621#622#0" expanded="true" />
-                <element signature="e#649#650#0" expanded="true" />
-                <element signature="e#676#677#0" expanded="true" />
-                <element signature="e#704#705#0" expanded="true" />
-                <element signature="e#731#732#0" expanded="true" />
-                <element signature="e#759#760#0" expanded="true" />
-                <element signature="e#786#787#0" expanded="true" />
-                <element signature="e#980#992#0" expanded="true" />
-                <element signature="e#1046#1055#0" expanded="true" />
-                <element signature="e#1109#1118#0" expanded="true" />
-                <element signature="e#3186#3187#0" expanded="true" />
-                <element signature="e#3218#3219#0" expanded="true" />
-                <element signature="e#3251#3252#0" expanded="true" />
-                <element signature="e#3283#3284#0" expanded="true" />
-                <element signature="e#3324#3325#0" expanded="true" />
-                <element signature="e#3361#3362#0" expanded="true" />
-                <element signature="e#3393#3394#0" expanded="true" />
-                <element signature="e#3466#3467#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,12 +55,13 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/SwingPaintDemo3.java" />
         <option value="$PROJECT_DIR$/src/CoordinateSet.java" />
+        <option value="$PROJECT_DIR$/src/SwingPaintDemo3.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-17" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="873" />
@@ -120,6 +92,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -176,7 +149,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -193,6 +165,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager" selected="Application.SwingPaintDemo3">
     <configuration default="false" name="SwingPaintDemo3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -359,6 +332,9 @@
       <AnalysisUIOptions />
     </option>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="fcdfb9e4-1e36-45b2-ae40-479adb7419c1" name="Default" comment="" />
@@ -368,7 +344,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <frame x="-17" y="23" width="1440" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -381,20 +357,20 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24004975" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24004975" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -421,49 +397,56 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/SwingPaintDemo3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1065">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CoordinateSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1064" max-vertical-offset="1965">
           <caret line="95" column="26" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#532#533#0" expanded="true" />
-            <element signature="e#566#567#0" expanded="true" />
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#980#992#0" expanded="true" />
-            <element signature="e#1046#1055#0" expanded="true" />
-            <element signature="e#1109#1118#0" expanded="true" />
-            <element signature="e#3186#3187#0" expanded="true" />
-            <element signature="e#3218#3219#0" expanded="true" />
-            <element signature="e#3251#3252#0" expanded="true" />
-            <element signature="e#3283#3284#0" expanded="true" />
-            <element signature="e#3324#3325#0" expanded="true" />
-            <element signature="e#3361#3362#0" expanded="true" />
-            <element signature="e#3393#3394#0" expanded="true" />
-            <element signature="e#3466#3467#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SwingPaintDemo3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2607204" vertical-offset="0" max-vertical-offset="1125">
+        <state vertical-scroll-proportion="0.0" vertical-offset="735" max-vertical-offset="1125">
           <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#368#498#0" expanded="true" />
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#1754#1755#0" expanded="true" />
-            <element signature="e#1828#1829#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoordinateSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1064" max-vertical-offset="1965">
+          <caret line="95" column="26" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoordinateSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1064" max-vertical-offset="1965">
+          <caret line="95" column="26" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SwingPaintDemo3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6140652" vertical-offset="422" max-vertical-offset="1005">
+          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
