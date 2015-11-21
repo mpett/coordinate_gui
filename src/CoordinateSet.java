@@ -73,7 +73,7 @@ public class CoordinateSet {
         try {
             url = new URL("http://daily.digpro.se/bios/servlet/bios.servlets.web.RecruitmentTestServlet");
             is = url.openStream();  // throws an IOException
-            br = new BufferedReader(new InputStreamReader(is));
+            br = new BufferedReader(new InputStreamReader(is, "ISO-8859-1"));
 
             while ((line = br.readLine()) != null) {
                 if (line.contains("#"))
@@ -91,8 +91,6 @@ public class CoordinateSet {
                 // nothing to see here
             }
         }
-
-
         return returnData;
     }
 }

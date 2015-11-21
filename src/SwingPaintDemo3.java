@@ -1,10 +1,15 @@
+import com.sun.codemodel.internal.*;
+
 import javax.swing.*;
+import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Timer;
+import javax.swing.Timer;
 
 public class SwingPaintDemo3 {
     public static void main(String[] args) {
@@ -27,6 +32,7 @@ public class SwingPaintDemo3 {
         frame.add(panel);
         JButton nextButton = new JButton("NEXT");
         JButton aboutButton = new JButton("ABOUT");
+        JButton timerButton = new JButton("STOP");
         final JTextArea ta = new JTextArea("Communicating with web server...");
         ta.setVisible(false);
 
@@ -42,6 +48,16 @@ public class SwingPaintDemo3 {
         final JLabel updateLabel = new JLabel("update");
         // status label end
 
+        final Timer timer = new Timer(30000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.updateSet();
+                panel.repaint();
+            }
+        });
+
+        timer.start();
+
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,6 +65,8 @@ public class SwingPaintDemo3 {
                 statusLabel.repaint();
                 panel.updateSet();
                 panel.repaint();
+                statusLabel.setText("123");
+                statusLabel.repaint();
             }
         });
 
@@ -59,10 +77,17 @@ public class SwingPaintDemo3 {
             }
         });
 
-
+        timerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop();
+                System.err.println("timer stopped");
+            }
+        });
 
         panel.add(nextButton);
         panel.add(aboutButton);
+        panel.add(timerButton);
         panel.add(ta);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
@@ -72,13 +97,13 @@ public class SwingPaintDemo3 {
 class MyPanel extends JPanel {
     private final int SCREENWIDTH = 800;
     private final int SCREENHEIGHT = 600;
-
     private int squareWidth = 20;
     private int squareHeight = 20;
     private double xCoordinateScale;
     private double yCoordinateScale;
     private int xMin, yMin;
     private CoordinateSet set;
+    private boolean update = false;
 
     private ArrayList<Coordinate> coordinates;
 
@@ -101,22 +126,19 @@ class MyPanel extends JPanel {
     public void updateSet() {
         System.err.println("Updating coordinates");
         set = new CoordinateSet();
-        System.err.println("Done");
     }
 
     public void paintComponent(Graphics g) {
-
         handleCoordinates();
         for (Coordinate coordinate : coordinates) {
-
             double xCoord = (coordinate.getxPosition() + xMin) * xCoordinateScale;
             double yCoord = (coordinate.getyPosition() + yMin) * yCoordinateScale;
             g.setColor(Color.RED);
             g.fillRect((int) xCoord,(int) yCoord,squareWidth,squareHeight);
+
             g.drawString(coordinate.getCoordinateName(),(int) xCoord, (int) yCoord);
             g.setColor(Color.BLACK);
             g.drawRect((int) xCoord,(int) yCoord, squareWidth, squareHeight);
         }
-
     }
 }
