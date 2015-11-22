@@ -11,11 +11,13 @@ import java.util.Collections;
  * Created by martinpettersson on 19/11/15.
  */
 public class CoordinateSet {
+    private static final String WEB_SERVER_URL = "http://daily.digpro.se/bios/servlet/bios.servlets.web.RecruitmentTestServlet";
+    private static final String CHARACTER_ENCODING = "ISO-8859-1";
     private ArrayList<Coordinate> coordinates;
     private int xMax, yMax, xMin, yMin;
 
     public CoordinateSet() {
-        coordinates = handleInput();
+        coordinates = processInput();
     }
 
     public ArrayList<Coordinate> getCoordinates() {
@@ -38,8 +40,8 @@ public class CoordinateSet {
         return yMin;
     }
 
-    private ArrayList<Coordinate> handleInput() {
-        String input = getInput();
+    private ArrayList<Coordinate> processInput() {
+        String input = getInputFromServer();
         String[] splitInput = input.split("\n");
         ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>();
         ArrayList<Integer> xCoords = new ArrayList<Integer>();
@@ -63,7 +65,7 @@ public class CoordinateSet {
         return coordinates;
     }
 
-    private String getInput() {
+    private String getInputFromServer() {
         URL url;
         InputStream is = null;
         BufferedReader br;
@@ -71,10 +73,9 @@ public class CoordinateSet {
         String returnData = "";
 
         try {
-            url = new URL("http://daily.digpro.se/bios/servlet/bios.servlets.web.RecruitmentTestServlet");
+            url = new URL(WEB_SERVER_URL);
             is = url.openStream();  // throws an IOException
-            br = new BufferedReader(new InputStreamReader(is, "ISO-8859-1"));
-
+            br = new BufferedReader(new InputStreamReader(is, CHARACTER_ENCODING));
             while ((line = br.readLine()) != null) {
                 if (line.contains("#"))
                     continue;

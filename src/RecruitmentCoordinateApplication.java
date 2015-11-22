@@ -1,19 +1,16 @@
-import com.sun.codemodel.internal.*;
-
 import javax.swing.*;
 import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 import javax.swing.Timer;
 
-public class SwingPaintDemo3 {
+public class RecruitmentCoordinateApplication {
+    private final static int RELOAD_TIME = 30000;
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -23,18 +20,16 @@ public class SwingPaintDemo3 {
         });
     }
 
-
-
     private static void createAndShowGUI() {
-        final MyPanel panel = new MyPanel();
-        panel.updateSet();
+        final CoordinatePanel coordinatePanel = new CoordinatePanel();
+        coordinatePanel.updateSet();
         System.out.println("Created GUI on EDT? " + SwingUtilities.isEventDispatchThread());
         final JFrame frame = new JFrame("Recruitment Test");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(900, 700);
-        frame.add(panel);
-        JButton nextButton = new JButton("Reload Coordinates");
+        frame.setSize(800, 600);
+        frame.add(coordinatePanel);
+        JButton reloadButton = new JButton("Reload Coordinates");
         JButton aboutButton = new JButton("About");
         final JButton timerButton = new JButton("Disable Automatic Reload");
 
@@ -47,29 +42,37 @@ public class SwingPaintDemo3 {
         final JLabel statusLabel = new JLabel("status");
         statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
         statusPanel.add(statusLabel);
-        final JLabel updateLabel = new JLabel("update");
         // status label end
 
-
-
-        Timer timer = new Timer(50000, new ActionListener() {
+        final Timer timer = new Timer(RELOAD_TIME, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel.updateSet();
-                panel.repaint();
+                SwingWorker<Boolean, Integer> worker = new SwingWorker<Boolean, Integer>() {
+                    @Override
+                    protected Boolean doInBackground() throws Exception {
+                        statusLabel.setText("Communicating with web server... (automatic reload)");
+                        coordinatePanel.updateSet();
+                        coordinatePanel.repaint();
+                        return true;
+                    }
+
+                    protected void done() {
+                        statusLabel.setText("Updated coordinates automatically at " + LocalDateTime.now());
+                    }
+                };
+                worker.execute();
             }
         });
-//        timer.start();
 
-        nextButton.addActionListener(new ActionListener() {
+        reloadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SwingWorker<Boolean, Integer> worker = new SwingWorker<Boolean, Integer>() {
                     @Override
                     protected Boolean doInBackground() throws Exception {
                         statusLabel.setText("Communicating with web server...");
-                        panel.updateSet();
-                        panel.repaint();
+                        coordinatePanel.updateSet();
+                        coordinatePanel.repaint();
                         return true;
                     }
 
@@ -84,39 +87,38 @@ public class SwingPaintDemo3 {
         aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "En produkt av Martin Pettersson\nkontakt@martinpettersson.se");
+                JOptionPane.showMessageDialog(frame, "Created by Martin Pettersson\nkontakt@martinpettersson.se");
             }
         });
 
         timerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.err.println("timer stopped");
+                timer.stop();
+                statusLabel.setText("Automatic reload disabled");
             }
         });
 
-        panel.add(nextButton);
-        panel.add(aboutButton);
-        panel.add(timerButton);
+        coordinatePanel.add(reloadButton);
+        coordinatePanel.add(timerButton);
+        coordinatePanel.add(aboutButton);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        timer.start();
     }
 }
 
-class MyPanel extends JPanel {
+class CoordinatePanel extends JPanel {
     private final int SCREENWIDTH = 800;
     private final int SCREENHEIGHT = 600;
     private int squareWidth = 20;
     private int squareHeight = 20;
-    private double xCoordinateScale;
-    private double yCoordinateScale;
+    private double xCoordinateScale, yCoordinateScale;
     private int xMin, yMin;
     private CoordinateSet set;
-    private boolean update = false;
-
     private ArrayList<Coordinate> coordinates;
 
-    public MyPanel() {
+    public CoordinatePanel() {
         setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
@@ -129,11 +131,10 @@ class MyPanel extends JPanel {
     }
 
     public Dimension getPreferredSize() {
-        return new Dimension(SCREENWIDTH + 300,SCREENHEIGHT + 100);
+        return new Dimension(SCREENWIDTH,SCREENHEIGHT);
     }
 
     public void updateSet() {
-        System.err.println("Updating coordinates");
         set = new CoordinateSet();
     }
 
