@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 import javax.swing.Timer;
 
 public class SwingPaintDemo3 {
@@ -63,17 +64,17 @@ public class SwingPaintDemo3 {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+                SwingWorker<Boolean, Integer> worker = new SwingWorker<Boolean, Integer>() {
                     @Override
-                    protected Void doInBackground() throws Exception {
+                    protected Boolean doInBackground() throws Exception {
+                        statusLabel.setText("Communicating with web server...");
                         panel.updateSet();
                         panel.repaint();
-                        return null;
+                        return true;
                     }
 
                     protected void done() {
                         statusLabel.setText("Updated coordinates at " + LocalDateTime.now());
-
                     }
                 };
                 worker.execute();
