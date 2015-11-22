@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
@@ -21,6 +22,8 @@ public class SwingPaintDemo3 {
         });
     }
 
+
+
     private static void createAndShowGUI() {
         final MyPanel panel = new MyPanel();
         panel.updateSet();
@@ -30,11 +33,9 @@ public class SwingPaintDemo3 {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900, 700);
         frame.add(panel);
-        JButton nextButton = new JButton("NEXT");
-        JButton aboutButton = new JButton("ABOUT");
-        JButton timerButton = new JButton("STOP");
-        final JTextArea ta = new JTextArea("Communicating with web server...");
-        ta.setVisible(false);
+        JButton nextButton = new JButton("Reload Coordinates");
+        JButton aboutButton = new JButton("About");
+        final JButton timerButton = new JButton("Disable Automatic Reload");
 
         // status label begin
         final JPanel statusPanel = new JPanel();
@@ -48,25 +49,34 @@ public class SwingPaintDemo3 {
         final JLabel updateLabel = new JLabel("update");
         // status label end
 
-        final Timer timer = new Timer(30000, new ActionListener() {
+
+
+        Timer timer = new Timer(50000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.updateSet();
                 panel.repaint();
             }
         });
-
-        timer.start();
+//        timer.start();
 
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                statusLabel.setText("Updated coordinates");
-                statusLabel.repaint();
-                panel.updateSet();
-                panel.repaint();
-                statusLabel.setText("123");
-                statusLabel.repaint();
+                SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        panel.updateSet();
+                        panel.repaint();
+                        return null;
+                    }
+
+                    protected void done() {
+                        statusLabel.setText("Updated coordinates at " + LocalDateTime.now());
+
+                    }
+                };
+                worker.execute();
             }
         });
 
@@ -80,7 +90,6 @@ public class SwingPaintDemo3 {
         timerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                timer.stop();
                 System.err.println("timer stopped");
             }
         });
@@ -88,7 +97,6 @@ public class SwingPaintDemo3 {
         panel.add(nextButton);
         panel.add(aboutButton);
         panel.add(timerButton);
-        panel.add(ta);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
@@ -135,7 +143,6 @@ class MyPanel extends JPanel {
             double yCoord = (coordinate.getyPosition() + yMin) * yCoordinateScale;
             g.setColor(Color.RED);
             g.fillRect((int) xCoord,(int) yCoord,squareWidth,squareHeight);
-
             g.drawString(coordinate.getCoordinateName(),(int) xCoord, (int) yCoord);
             g.setColor(Color.BLACK);
             g.drawRect((int) xCoord,(int) yCoord, squareWidth, squareHeight);
