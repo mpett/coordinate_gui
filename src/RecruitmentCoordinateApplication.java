@@ -8,8 +8,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
+/**
+ * Recruitment Test Application
+ *
+ * @author Martin Pettersson
+ */
 public class RecruitmentCoordinateApplication {
     private final static int RELOAD_TIME = 30000;
+    private final static int SCREEN_WIDTH = 800;
+    private final static int SCREEN_HEIGHT = 600;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -20,37 +27,38 @@ public class RecruitmentCoordinateApplication {
         });
     }
 
+    /**
+     * Create and display all GUI elements
+     */
     private static void createAndShowGUI() {
+        // Create a coordinate panel and add it to the main frame
         final CoordinatePanel coordinatePanel = new CoordinatePanel();
-
-
-
-        //System.out.println("Created GUI on EDT? " + SwingUtilities.isEventDispatchThread());
         final JFrame frame = new JFrame("Recruitment Test");
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        frame.add(coordinatePanel);
+
+        // Create buttons
         JButton reloadButton = new JButton("Reload Coordinates");
         JButton aboutButton = new JButton("About");
         final JButton timerButton = new JButton("Disable Automatic Reload");
-        frame.add(coordinatePanel);
 
-        // Button Panel
+        // Create button panel
         final JPanel buttonPanel = new JPanel();
         frame.add(buttonPanel, BorderLayout.NORTH);
         buttonPanel.setPreferredSize(new Dimension(frame.getWidth(), 40));
 
-        // status label begin
+        // Create status panel and label at the bottom of the screen
         final JPanel statusPanel = new JPanel();
         statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
         frame.add(statusPanel, BorderLayout.SOUTH);
         statusPanel.setPreferredSize(new Dimension(frame.getWidth(), 16));
         statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
-        final JLabel statusLabel = new JLabel("status");
+        final JLabel statusLabel = new JLabel("Status");
         statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
         statusPanel.add(statusLabel);
-        // status label end
 
+        // Initialize automatic reload timer on a separate thread
         final Timer timer = new Timer(RELOAD_TIME, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,7 +70,6 @@ public class RecruitmentCoordinateApplication {
                         coordinatePanel.repaint();
                         return true;
                     }
-
                     protected void done() {
                         statusLabel.setText("Updated coordinates automatically at " + LocalDateTime.now());
                     }
@@ -71,6 +78,7 @@ public class RecruitmentCoordinateApplication {
             }
         });
 
+        // Listener for automatic reload timer button
         reloadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -90,6 +98,7 @@ public class RecruitmentCoordinateApplication {
             }
         });
 
+        // Listener for about button
         aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,6 +106,7 @@ public class RecruitmentCoordinateApplication {
             }
         });
 
+        // Listener for disable automatic reload button
         timerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,18 +115,23 @@ public class RecruitmentCoordinateApplication {
             }
         });
 
-
+        // Add buttons to button panel
         buttonPanel.add(reloadButton);
         buttonPanel.add(timerButton);
         buttonPanel.add(aboutButton);
+
+        // Set frame visibility, update coordinates and start automatic reload timer
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         coordinatePanel.updateSet();
         timer.start();
-
     }
 }
 
+/**
+ * JPanel which downloads coordinates through a CoordinateSet and draws them as rectangles
+ * along with their name
+ */
 class CoordinatePanel extends JPanel {
     private final int SCREENWIDTH = 800;
     private final int SCREENHEIGHT = 600;
@@ -131,24 +146,32 @@ class CoordinatePanel extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
-    private void handleCoordinates() {
+    /**
+     * Scale coordinates so they fit the panel properly
+     */
+    private void scaleCoordinates() {
+        coordinates = set.getCoordinates();
         xMin = Math.abs(set.getxMin());
         yMin = Math.abs(set.getyMin());
         xCoordinateScale = ((double) SCREENWIDTH - 60) / (set.getxMax() + xMin);
         yCoordinateScale = ((double) SCREENHEIGHT - 115) / (set.getyMax() + yMin);
-        coordinates = set.getCoordinates();
     }
 
-    public Dimension getPreferredSize() {
-        return new Dimension(SCREENWIDTH,SCREENHEIGHT);
-    }
-
+    /**
+     * Download a new set of coordinates
+     */
     public void updateSet() {
         set = new CoordinateSet();
     }
 
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(SCREENWIDTH,SCREENHEIGHT);
+    }
+
+    @Override
     public void paintComponent(Graphics g) {
-        handleCoordinates();
+        scaleCoordinates();
         for (Coordinate coordinate : coordinates) {
             double xCoord = (coordinate.getxPosition() + xMin) * xCoordinateScale;
             double yCoord = (coordinate.getyPosition() + yMin) * yCoordinateScale;
