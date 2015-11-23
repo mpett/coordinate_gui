@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Created by martinpettersson on 19/11/15.
+ * CoordinateSet
+ * Downloads coordinates from a web server and stores them in a coordinate data structure.
+ *
+ * @author Martin Pettersson
  */
 public class CoordinateSet {
     private static final String WEB_SERVER_URL = "http://daily.digpro.se/bios/servlet/bios.servlets.web.RecruitmentTestServlet";
@@ -40,12 +43,17 @@ public class CoordinateSet {
         return yMin;
     }
 
+    /**
+     * Process the input string and stores it as coordinates.
+     * @return List of coordinates
+     */
     private ArrayList<Coordinate> processInput() {
         String input = getInputFromServer();
         String[] splitInput = input.split("\n");
         ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>();
         ArrayList<Integer> xCoords = new ArrayList<Integer>();
         ArrayList<Integer> yCoords = new ArrayList<Integer>();
+
         for (String inputLine : splitInput) {
             String[] splitInputLine = inputLine.split(", ");
             int xCoordinate = Integer.parseInt(splitInputLine[0]);
@@ -56,6 +64,7 @@ public class CoordinateSet {
             yCoords.add(yCoordinate);
             coordinates.add(coordinate);
         }
+
         Collections.sort(xCoords);
         Collections.sort(yCoords);
         xMax = xCoords.get(xCoords.size()-1);
@@ -65,6 +74,11 @@ public class CoordinateSet {
         return coordinates;
     }
 
+    /**
+     * Communicates with web server and returns an input string with the desired character encoding.
+     * Removes all comments in the form of '#'.
+     * @return Input String
+     */
     private String getInputFromServer() {
         URL url;
         InputStream is = null;
@@ -74,7 +88,7 @@ public class CoordinateSet {
 
         try {
             url = new URL(WEB_SERVER_URL);
-            is = url.openStream();  // throws an IOException
+            is = url.openStream();
             br = new BufferedReader(new InputStreamReader(is, CHARACTER_ENCODING));
             while ((line = br.readLine()) != null) {
                 if (line.contains("#"))
@@ -89,13 +103,16 @@ public class CoordinateSet {
             try {
                 if (is != null) is.close();
             } catch (IOException ioe) {
-                // nothing to see here
+                 // Caught an IO exception
             }
         }
         return returnData;
     }
 }
 
+/**
+ * Class for storing coordinates, takes x,y-positions and a name.
+ */
 class Coordinate {
     private int xPosition, yPosition;
     private String coordinateName;

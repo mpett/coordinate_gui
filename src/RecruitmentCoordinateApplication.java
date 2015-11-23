@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 /**
- * Recruitment Test Application
+ * RecruitmentCoordinateApplication
+ * Builds a Graphical User Interface that displays coordinates, buttons and a status panel.
  *
  * @author Martin Pettersson
  */
@@ -31,7 +32,7 @@ public class RecruitmentCoordinateApplication {
      * Create and display all GUI elements
      */
     private static void createAndShowGUI() {
-        // Create a coordinate panel and add it to the main frame
+        // Create a coordinate panel and a main frame
         final CoordinatePanel coordinatePanel = new CoordinatePanel();
         final JFrame frame = new JFrame("Recruitment Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,12 +44,12 @@ public class RecruitmentCoordinateApplication {
         JButton aboutButton = new JButton("About");
         final JButton timerButton = new JButton("Disable Automatic Reload");
 
-        // Create button panel
+        // Create button panel at the top of the frame
         final JPanel buttonPanel = new JPanel();
         frame.add(buttonPanel, BorderLayout.NORTH);
         buttonPanel.setPreferredSize(new Dimension(frame.getWidth(), 40));
 
-        // Create status panel and label at the bottom of the screen
+        // Create status panel and label at the bottom of the frame
         final JPanel statusPanel = new JPanel();
         statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
         frame.add(statusPanel, BorderLayout.SOUTH);
@@ -120,7 +121,7 @@ public class RecruitmentCoordinateApplication {
         buttonPanel.add(timerButton);
         buttonPanel.add(aboutButton);
 
-        // Set frame visibility, update coordinates and start automatic reload timer
+        // Set frame visibility, update coordinates (on startup) and start automatic reload timer
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         coordinatePanel.updateSet();
@@ -173,6 +174,7 @@ class CoordinatePanel extends JPanel {
     public void paintComponent(Graphics g) {
         scaleCoordinates();
         for (Coordinate coordinate : coordinates) {
+            System.err.println(coordinate.getxPosition() + " " + coordinate.getyPosition());
             double xCoord = (coordinate.getxPosition() + xMin) * xCoordinateScale;
             double yCoord = (coordinate.getyPosition() + yMin) * yCoordinateScale;
             g.setColor(Color.DARK_GRAY);
