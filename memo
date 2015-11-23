@@ -16,4 +16,6 @@ memo
 Problem jag har stött på:
 paintcomponent kallas två gånger -- löste det genom att flytta koordinatuppdateringen
 tooltips funkar fint på swing-object men inte på graphics-objekt som jag har löst det
-statusbar är helt åt helvete, behöver researcha detta eller göra en fulllösning
+statusbar är helt åt helvete, behöver researcha detta eller göra en fulllösning -- löste det med multi-threading
+bygga jarfil funkade inte i intellij, däremot gick det bra i netbeans
+Inte helt uppenbart att Timer var det som skulle användas vid automaisk uppdatering

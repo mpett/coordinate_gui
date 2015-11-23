@@ -22,8 +22,8 @@ public class RecruitmentCoordinateApplication {
 
     private static void createAndShowGUI() {
         final CoordinatePanel coordinatePanel = new CoordinatePanel();
-        coordinatePanel.updateSet();
-        System.out.println("Created GUI on EDT? " + SwingUtilities.isEventDispatchThread());
+
+        //System.out.println("Created GUI on EDT? " + SwingUtilities.isEventDispatchThread());
         final JFrame frame = new JFrame("Recruitment Test");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,7 +104,9 @@ public class RecruitmentCoordinateApplication {
         coordinatePanel.add(aboutButton);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        coordinatePanel.updateSet();
         timer.start();
+
     }
 }
 
