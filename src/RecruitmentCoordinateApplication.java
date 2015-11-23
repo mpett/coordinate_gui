@@ -23,15 +23,22 @@ public class RecruitmentCoordinateApplication {
     private static void createAndShowGUI() {
         final CoordinatePanel coordinatePanel = new CoordinatePanel();
 
+
+
         //System.out.println("Created GUI on EDT? " + SwingUtilities.isEventDispatchThread());
         final JFrame frame = new JFrame("Recruitment Test");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
-        frame.add(coordinatePanel);
         JButton reloadButton = new JButton("Reload Coordinates");
         JButton aboutButton = new JButton("About");
         final JButton timerButton = new JButton("Disable Automatic Reload");
+        frame.add(coordinatePanel);
+
+        // Button Panel
+        final JPanel buttonPanel = new JPanel();
+        frame.add(buttonPanel, BorderLayout.NORTH);
+        buttonPanel.setPreferredSize(new Dimension(frame.getWidth(), 40));
 
         // status label begin
         final JPanel statusPanel = new JPanel();
@@ -75,7 +82,6 @@ public class RecruitmentCoordinateApplication {
                         coordinatePanel.repaint();
                         return true;
                     }
-
                     protected void done() {
                         statusLabel.setText("Updated coordinates at " + LocalDateTime.now());
                     }
@@ -99,9 +105,10 @@ public class RecruitmentCoordinateApplication {
             }
         });
 
-        coordinatePanel.add(reloadButton);
-        coordinatePanel.add(timerButton);
-        coordinatePanel.add(aboutButton);
+
+        buttonPanel.add(reloadButton);
+        buttonPanel.add(timerButton);
+        buttonPanel.add(aboutButton);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         coordinatePanel.updateSet();
@@ -127,8 +134,8 @@ class CoordinatePanel extends JPanel {
     private void handleCoordinates() {
         xMin = Math.abs(set.getxMin());
         yMin = Math.abs(set.getyMin());
-        xCoordinateScale = (double) SCREENWIDTH / (set.getxMax() + xMin);
-        yCoordinateScale = (double) SCREENHEIGHT / (set.getyMax() + yMin);
+        xCoordinateScale = ((double) SCREENWIDTH - 60) / (set.getxMax() + xMin);
+        yCoordinateScale = ((double) SCREENHEIGHT - 115) / (set.getyMax() + yMin);
         coordinates = set.getCoordinates();
     }
 
@@ -145,9 +152,9 @@ class CoordinatePanel extends JPanel {
         for (Coordinate coordinate : coordinates) {
             double xCoord = (coordinate.getxPosition() + xMin) * xCoordinateScale;
             double yCoord = (coordinate.getyPosition() + yMin) * yCoordinateScale;
-            g.setColor(Color.RED);
+            g.setColor(Color.DARK_GRAY);
             g.fillRect((int) xCoord,(int) yCoord,squareWidth,squareHeight);
-            g.drawString(coordinate.getCoordinateName(),(int) xCoord, (int) yCoord);
+            g.drawString(coordinate.getCoordinateName(),(int) xCoord, (int) yCoord + squareHeight + 15);
             g.setColor(Color.BLACK);
             g.drawRect((int) xCoord,(int) yCoord, squareWidth, squareHeight);
         }
