@@ -103,7 +103,7 @@ public class CoordinateSet {
             try {
                 if (is != null) is.close();
             } catch (IOException ioe) {
-                 // Caught an IO exception
+                // Caught an IO exception
             }
         }
         return returnData;

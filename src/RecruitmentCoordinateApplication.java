@@ -1,12 +1,10 @@
 import javax.swing.*;
-import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import javax.swing.Timer;
 
 /**
  * RecruitmentCoordinateApplication
@@ -63,12 +61,13 @@ public class RecruitmentCoordinateApplication {
         final Timer timer = new Timer(RELOAD_TIME, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SwingWorker<Boolean, Integer> worker = new SwingWorker<Boolean, Integer>() {
+                SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
                     @Override
                     protected Boolean doInBackground() throws Exception {
                         statusLabel.setText("Communicating with web server... (automatic reload)");
                         coordinatePanel.updateSet();
-                        coordinatePanel.repaint();
+                        frame.revalidate();
+                        frame.repaint();
                         return true;
                     }
                     protected void done() {
@@ -83,12 +82,13 @@ public class RecruitmentCoordinateApplication {
         reloadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SwingWorker<Boolean, Integer> worker = new SwingWorker<Boolean, Integer>() {
+                SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
                     @Override
                     protected Boolean doInBackground() throws Exception {
                         statusLabel.setText("Communicating with web server...");
                         coordinatePanel.updateSet();
-                        coordinatePanel.repaint();
+                        frame.revalidate();
+                        frame.repaint();
                         return true;
                     }
                     protected void done() {
@@ -174,7 +174,6 @@ class CoordinatePanel extends JPanel {
     public void paintComponent(Graphics g) {
         scaleCoordinates();
         for (Coordinate coordinate : coordinates) {
-            System.err.println(coordinate.getxPosition() + " " + coordinate.getyPosition());
             double xCoord = (coordinate.getxPosition() + xMin) * xCoordinateScale;
             double yCoord = (coordinate.getyPosition() + yMin) * yCoordinateScale;
             g.setColor(Color.DARK_GRAY);
